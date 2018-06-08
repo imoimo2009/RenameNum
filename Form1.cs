@@ -92,17 +92,17 @@ namespace RenameNum
                     catch(IOException e)
                     {
                         MessageBox.Show(e.Message);
-                        MessageBox.Show(MSG_EXEC_ERROR);
                         break;
                     }
                 }
-                if (i <= Lv_Preview1.Items.Count)
+                if (i < Lv_Preview1.Items.Count)
                 {
                     for (int j = 0; j < i; j++)
                     {
                         string path1 = Tb_Path.Text + "\\" + Lv_Preview1.Items[j].Text;
                         string path2 = Tb_Path.Text + "\\" + Lv_Preview2.Items[j].Text;
                         File.Move(path2, path1);
+                        MessageBox.Show(MSG_EXEC_ERROR);
                     }
                 }
                 else
