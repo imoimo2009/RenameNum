@@ -105,9 +105,15 @@
             // 
             this.Num_Start.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Num_Start.Location = new System.Drawing.Point(77, 65);
+            this.Num_Start.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.Num_Start.Name = "Num_Start";
             this.Num_Start.Size = new System.Drawing.Size(52, 20);
             this.Num_Start.TabIndex = 4;
+            this.Num_Start.ValueChanged += new System.EventHandler(this.Num_Start_ValueChanged);
             // 
             // label2
             // 
@@ -123,9 +129,25 @@
             // 
             this.Num_Digits.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Num_Digits.Location = new System.Drawing.Point(202, 65);
+            this.Num_Digits.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.Num_Digits.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.Num_Digits.Name = "Num_Digits";
             this.Num_Digits.Size = new System.Drawing.Size(52, 20);
             this.Num_Digits.TabIndex = 6;
+            this.Num_Digits.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Num_Digits.ValueChanged += new System.EventHandler(this.Num_Digits_ValueChanged);
             // 
             // label3
             // 
@@ -146,6 +168,7 @@
             this.Btn_Rename.TabIndex = 10;
             this.Btn_Rename.Text = "Rename";
             this.Btn_Rename.UseVisualStyleBackColor = true;
+            this.Btn_Rename.Click += new System.EventHandler(this.Btn_Rename_Click);
             // 
             // label5
             // 
@@ -163,6 +186,7 @@
             this.Tb_Prefix.Name = "Tb_Prefix";
             this.Tb_Prefix.Size = new System.Drawing.Size(142, 19);
             this.Tb_Prefix.TabIndex = 12;
+            this.Tb_Prefix.TextChanged += new System.EventHandler(this.Tb_Prefix_TextChanged);
             // 
             // Lv_Preview1
             // 
@@ -201,6 +225,7 @@
             this.Tb_Suffix.Name = "Tb_Suffix";
             this.Tb_Suffix.Size = new System.Drawing.Size(142, 19);
             this.Tb_Suffix.TabIndex = 16;
+            this.Tb_Suffix.TextChanged += new System.EventHandler(this.Tb_Suffix_TextChanged);
             // 
             // Btn_FolderOpen
             // 
@@ -237,7 +262,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 407);
+            this.ClientSize = new System.Drawing.Size(460, 403);
             this.ControlBox = false;
             this.Controls.Add(this.label8);
             this.Controls.Add(this.Lv_Preview2);
