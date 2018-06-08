@@ -62,9 +62,7 @@ namespace RenameNum
             FileInfo[] files = GetFileInfos(Tb_Path.Text, "*" + Cmb_Extention.Text);
             Lv_Preview1.Items.Clear();
             Lv_Preview2.Items.Clear();
-            Array.Sort<FileInfo>(files, delegate (FileInfo a, FileInfo b) {
-                return a.Name.CompareTo(b.Name);
-            });
+            Array.Sort<FileInfo>(files, delegate (FileInfo a, FileInfo b) { return a.Name.CompareTo(b.Name); });
             int digit = (int)Num_Digits.Value;
             decimal num = Num_Start.Value;
             string prefix = Tb_Prefix.Text;
