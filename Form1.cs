@@ -81,7 +81,9 @@ namespace RenameNum
         {
             if (MessageBox.Show(MSG_EXEC_CONFIRM, "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                for (int i = 0; i < Lv_Preview1.Items.Count; i++)
+                int i;
+
+                for (i = 0; i < Lv_Preview1.Items.Count; i++)
                 {
                     try
                     {
@@ -96,8 +98,20 @@ namespace RenameNum
                         break;
                     }
                 }
-                MessageBox.Show(MSG_EXEC_COMPLETE);
-                InitLvPreview();
+                if (i <= Lv_Preview1.Items.Count)
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        string path1 = Tb_Path.Text + "\\" + Lv_Preview1.Items[j].Text;
+                        string path2 = Tb_Path.Text + "\\" + Lv_Preview2.Items[j].Text;
+                        File.Move(path2, path1);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(MSG_EXEC_COMPLETE);
+                    InitLvPreview();
+                }
             }
         }
 
