@@ -52,6 +52,7 @@ namespace RenameNum
                 if (f.Extension == "") sc = 1;
                 if (sc == 0) Cmb_Extention.Items.Add(f.Extension);
             }
+            Cmb_Extention.Items.Add(MODE_FOLDER);
             Cmb_Extention.Sorted = true;
             Cmb_Extention.Focus();
         }
@@ -59,19 +60,32 @@ namespace RenameNum
         private void InitLvPreview()
         {
             if (Cmb_Extention.Text == "") return;
-            FileInfo[] files = GetFileInfos(Tb_Path.Text, "*" + Cmb_Extention.Text);
-            Lv_Preview1.Items.Clear();
-            Lv_Preview2.Items.Clear();
-            Array.Sort<FileInfo>(files, delegate (FileInfo a, FileInfo b) { return a.Name.CompareTo(b.Name); });
             int digit = (int)Num_Digits.Value;
             decimal num = Num_Start.Value;
             string prefix = Tb_Prefix.Text;
             string suffix = Tb_Suffix.Text;
-            foreach (FileInfo f in files)
+            Lv_Preview1.Items.Clear();
+            Lv_Preview2.Items.Clear();
+            if (Cmb_Extention.Text == MODE_FOLDER)
             {
-                Lv_Preview1.Items.Add(f.Name);
-                Lv_Preview2.Items.Add(prefix + num.ToString().PadLeft(digit, '0') + suffix + Cmb_Extention.Text);
-                num++;
+                DirectoryInfo dir = new DirectoryInfo(Tb_Path.Text);
+                DirectoryInfo[] dirs = dir.GetDirectories("*", SearchOption.AllDirectories);
+                Array.Sort<DirectoryInfo>(dirs, delegate (DirectoryInfo a, DirectoryInfo b) { return a.Name.CompareTo(b.Name); });
+                foreach (DirectoryInfo d in dirs)
+                {
+                    Lv_Preview1.Items.Add(d.Name);
+                    Lv_Preview2.Items.Add(prefix + num++.ToString().PadLeft(digit, '0') + suffix);
+                }
+            }
+            else
+            {
+                FileInfo[] files = GetFileInfos(Tb_Path.Text, "*" + Cmb_Extention.Text);
+                Array.Sort<FileInfo>(files, delegate (FileInfo a, FileInfo b) { return a.Name.CompareTo(b.Name); });
+                foreach (FileInfo f in files)
+                {
+                    Lv_Preview1.Items.Add(f.Name);
+                    Lv_Preview2.Items.Add(prefix + num++.ToString().PadLeft(digit, '0') + suffix + Cmb_Extention.Text);
+                }
             }
         }
 
@@ -79,36 +93,47 @@ namespace RenameNum
         {
             if (MessageBox.Show(MSG_EXEC_CONFIRM, "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                int i;
-
-                for (i = 0; i < Lv_Preview1.Items.Count; i++)
+                for (int i = 0; i < Lv_Preview1.Items.Count; i++)
                 {
+                    string path1 = Tb_Path.Text + "\\" + Lv_Preview1.Items[i].Text;
+                    string path2 = Tb_Path.Text + "\\" + Lv_Preview2.Items[i].Text;
                     try
                     {
-                        string path1 = Tb_Path.Text + "\\" + Lv_Preview1.Items[i].Text;
-                        string path2 = Tb_Path.Text + "\\" + Lv_Preview2.Items[i].Text;
-                        File.Move(path1, path2);
+                        if (Cmb_Extention.Text == MODE_FOLDER)
+                        {
+                            Directory.Move(path1, path2);
+                        }
+                        else
+                        {
+                            File.Move(path1, path2);
+                        }
                     }
                     catch(IOException e)
                     {
                         MessageBox.Show(e.Message);
-                        break;
+                        Rollback_Rename(i);
+                        MessageBox.Show(MSG_EXEC_ERROR);
+                        return;
                     }
                 }
-                if (i < Lv_Preview1.Items.Count)
+                MessageBox.Show(MSG_EXEC_COMPLETE);
+                InitLvPreview();
+            }
+        }
+
+        private void Rollback_Rename(int ed)
+        {
+            for (int j = 0; j < ed; j++)
+            {
+                string path1 = Tb_Path.Text + "\\" + Lv_Preview1.Items[j].Text;
+                string path2 = Tb_Path.Text + "\\" + Lv_Preview2.Items[j].Text;
+                if (Cmb_Extention.Text == MODE_FOLDER)
                 {
-                    for (int j = 0; j < i; j++)
-                    {
-                        string path1 = Tb_Path.Text + "\\" + Lv_Preview1.Items[j].Text;
-                        string path2 = Tb_Path.Text + "\\" + Lv_Preview2.Items[j].Text;
-                        File.Move(path2, path1);
-                        MessageBox.Show(MSG_EXEC_ERROR);
-                    }
+                    Directory.Move(path2, path1);
                 }
                 else
                 {
-                    MessageBox.Show(MSG_EXEC_COMPLETE);
-                    InitLvPreview();
+                    File.Move(path2, path1);
                 }
             }
         }

@@ -7,5 +7,6 @@ namespace RenameNum
         public const string MSG_EXEC_CONFIRM = "リネーム処理を実行します。よろしいですか？";
         public const string MSG_EXEC_ERROR = "リネーム処理を中断します。";
         public const string MSG_EXEC_COMPLETE = "処理は正常に終了しました。";
+        public const string MODE_FOLDER = "(folder)";
     }
 }
