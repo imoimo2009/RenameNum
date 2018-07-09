@@ -123,10 +123,10 @@ namespace RenameNum
 
         private void Rollback_Rename(int ed)
         {
-            for (int j = 0; j < ed; j++)
+            for (int i = 0; i < ed; i++)
             {
-                string path1 = Tb_Path.Text + "\\" + Lv_Preview1.Items[j].Text;
-                string path2 = Tb_Path.Text + "\\" + Lv_Preview2.Items[j].Text;
+                string path1 = Tb_Path.Text + "\\" + Lv_Preview1.Items[i].Text;
+                string path2 = Tb_Path.Text + "\\" + Lv_Preview2.Items[i].Text;
                 if (Cmb_Extention.Text == MODE_FOLDER)
                 {
                     Directory.Move(path2, path1);
