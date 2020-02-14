@@ -19,7 +19,8 @@ namespace RenameNum
             FolderBrowserDialog fbd = new FolderBrowserDialog()
             {
                 ShowNewFolderButton = false,
-                Description = FOLDERDLG_DESCRIPTION
+                Description = FOLDERDLG_DESCRIPTION,
+                SelectedPath = Tb_Path.Text
             };
             fbd.ShowDialog();
             if (fbd.SelectedPath != "")
@@ -69,7 +70,15 @@ namespace RenameNum
             if (Cmb_Extention.Text == MODE_FOLDER)
             {
                 DirectoryInfo dir = new DirectoryInfo(Tb_Path.Text);
-                DirectoryInfo[] dirs = dir.GetDirectories("*", SearchOption.AllDirectories);
+                DirectoryInfo[] dirs;
+                try
+                {
+                    dirs = dir.GetDirectories("*", SearchOption.AllDirectories);
+                }
+                catch(System.UnauthorizedAccessException)
+                {
+                    
+                }           
                 Array.Sort<DirectoryInfo>(dirs, delegate (DirectoryInfo a, DirectoryInfo b) { return a.Name.CompareTo(b.Name); });
                 foreach (DirectoryInfo d in dirs)
                 {
@@ -87,6 +96,12 @@ namespace RenameNum
                     Lv_Preview2.Items.Add(prefix + num++.ToString().PadLeft(digit, '0') + suffix + Cmb_Extention.Text);
                 }
             }
+        }
+
+        private DirectoryInfo[] GetDirectories(DirectoryInfo dir)
+        {
+            DirectoryInfo[] dirs;
+
         }
 
         private void Exec_Rename()

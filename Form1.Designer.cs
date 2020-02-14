@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label4 = new System.Windows.Forms.Label();
             this.Btn_Close = new System.Windows.Forms.Button();
             this.Cmb_Extention = new System.Windows.Forms.ComboBox();
@@ -288,10 +289,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Tb_Path);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "連番リネームくん";
             ((System.ComponentModel.ISupportInitialize)(this.Num_Start)).EndInit();
