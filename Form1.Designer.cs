@@ -102,6 +102,7 @@
             this.Tb_Path.ReadOnly = true;
             this.Tb_Path.Size = new System.Drawing.Size(353, 19);
             this.Tb_Path.TabIndex = 0;
+            this.Tb_Path.TextChanged += new System.EventHandler(this.Tb_Path_TextChanged);
             this.Tb_Path.DragDrop += new System.Windows.Forms.DragEventHandler(this.Tb_Path_DragDrop);
             this.Tb_Path.DragEnter += new System.Windows.Forms.DragEventHandler(this.Tb_Path_DragEnter);
             // 

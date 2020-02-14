@@ -24,12 +24,7 @@ namespace RenameNum
             };
             fbd.ShowDialog();
             if (fbd.SelectedPath != "")
-            {
                 Tb_Path.Text = fbd.SelectedPath;
-                InitCmbExtention();
-                Lv_Preview1.Items.Clear();
-                Lv_Preview2.Items.Clear();
-            }
         }
 
         private FileInfo[] GetFileInfos(string dirpath, string filter)
@@ -43,6 +38,7 @@ namespace RenameNum
         {
             FileInfo[] files = GetFileInfos(Tb_Path.Text, "*");
             Cmb_Extention.Items.Clear();
+            Cmb_Extention.Items.Add(MODE_FOLDER);
             foreach (FileInfo f in files)
             {
                 int sc = 0;
@@ -53,9 +49,10 @@ namespace RenameNum
                 if (f.Extension == "") sc = 1;
                 if (sc == 0) Cmb_Extention.Items.Add(f.Extension);
             }
-            Cmb_Extention.Items.Add(MODE_FOLDER);
             Cmb_Extention.Sorted = true;
             Cmb_Extention.Focus();
+            Lv_Preview1.Items.Clear();
+            Lv_Preview2.Items.Clear();
         }
 
         private void InitLvPreview()
@@ -70,15 +67,7 @@ namespace RenameNum
             if (Cmb_Extention.Text == MODE_FOLDER)
             {
                 DirectoryInfo dir = new DirectoryInfo(Tb_Path.Text);
-                DirectoryInfo[] dirs;
-                try
-                {
-                    dirs = dir.GetDirectories("*", SearchOption.AllDirectories);
-                }
-                catch(System.UnauthorizedAccessException)
-                {
-                    
-                }           
+                DirectoryInfo[] dirs = dir.GetDirectories();
                 Array.Sort<DirectoryInfo>(dirs, delegate (DirectoryInfo a, DirectoryInfo b) { return a.Name.CompareTo(b.Name); });
                 foreach (DirectoryInfo d in dirs)
                 {
@@ -96,12 +85,6 @@ namespace RenameNum
                     Lv_Preview2.Items.Add(prefix + num++.ToString().PadLeft(digit, '0') + suffix + Cmb_Extention.Text);
                 }
             }
-        }
-
-        private DirectoryInfo[] GetDirectories(DirectoryInfo dir)
-        {
-            DirectoryInfo[] dirs;
-
         }
 
         private void Exec_Rename()
@@ -210,6 +193,11 @@ namespace RenameNum
                 e.Effect = DragDropEffects.Copy;
             else
                 e.Effect = DragDropEffects.None;
+        }
+
+        private void Tb_Path_TextChanged(object sender, EventArgs e)
+        {
+            InitCmbExtention();
         }
     }
 }
