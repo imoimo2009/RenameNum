@@ -55,7 +55,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(274, 65);
+            this.label4.Location = new System.Drawing.Point(282, 65);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 15);
             this.label4.TabIndex = 7;
@@ -64,7 +64,7 @@
             // Btn_Close
             // 
             this.Btn_Close.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Btn_Close.Location = new System.Drawing.Point(373, 378);
+            this.Btn_Close.Location = new System.Drawing.Point(380, 378);
             this.Btn_Close.Name = "Btn_Close";
             this.Btn_Close.Size = new System.Drawing.Size(79, 23);
             this.Btn_Close.TabIndex = 9;
@@ -77,9 +77,9 @@
             this.Cmb_Extention.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cmb_Extention.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Cmb_Extention.FormattingEnabled = true;
-            this.Cmb_Extention.Location = new System.Drawing.Point(360, 64);
+            this.Cmb_Extention.Location = new System.Drawing.Point(372, 64);
             this.Cmb_Extention.Name = "Cmb_Extention";
-            this.Cmb_Extention.Size = new System.Drawing.Size(91, 21);
+            this.Cmb_Extention.Size = new System.Drawing.Size(87, 21);
             this.Cmb_Extention.TabIndex = 8;
             this.Cmb_Extention.SelectedIndexChanged += new System.EventHandler(this.Cmb_Extention_SelectedIndexChanged);
             // 
@@ -95,11 +95,14 @@
             // 
             // Tb_Path
             // 
+            this.Tb_Path.AllowDrop = true;
             this.Tb_Path.Location = new System.Drawing.Point(77, 18);
             this.Tb_Path.Name = "Tb_Path";
             this.Tb_Path.ReadOnly = true;
-            this.Tb_Path.Size = new System.Drawing.Size(345, 19);
+            this.Tb_Path.Size = new System.Drawing.Size(353, 19);
             this.Tb_Path.TabIndex = 0;
+            this.Tb_Path.DragDrop += new System.Windows.Forms.DragEventHandler(this.Tb_Path_DragDrop);
+            this.Tb_Path.DragEnter += new System.Windows.Forms.DragEventHandler(this.Tb_Path_DragEnter);
             // 
             // Num_Start
             // 
@@ -162,7 +165,7 @@
             // Btn_Rename
             // 
             this.Btn_Rename.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Btn_Rename.Location = new System.Drawing.Point(288, 378);
+            this.Btn_Rename.Location = new System.Drawing.Point(295, 378);
             this.Btn_Rename.Name = "Btn_Rename";
             this.Btn_Rename.Size = new System.Drawing.Size(79, 23);
             this.Btn_Rename.TabIndex = 10;
@@ -192,6 +195,7 @@
             // 
             this.Lv_Preview1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Lv_Preview1.FullRowSelect = true;
+            this.Lv_Preview1.HideSelection = false;
             this.Lv_Preview1.Location = new System.Drawing.Point(77, 91);
             this.Lv_Preview1.Name = "Lv_Preview1";
             this.Lv_Preview1.Size = new System.Drawing.Size(166, 281);
@@ -213,7 +217,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(248, 41);
+            this.label7.Location = new System.Drawing.Point(256, 41);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 15);
             this.label7.TabIndex = 15;
@@ -221,15 +225,15 @@
             // 
             // Tb_Suffix
             // 
-            this.Tb_Suffix.Location = new System.Drawing.Point(308, 41);
+            this.Tb_Suffix.Location = new System.Drawing.Point(316, 41);
             this.Tb_Suffix.Name = "Tb_Suffix";
-            this.Tb_Suffix.Size = new System.Drawing.Size(142, 19);
+            this.Tb_Suffix.Size = new System.Drawing.Size(143, 19);
             this.Tb_Suffix.TabIndex = 16;
             this.Tb_Suffix.TextChanged += new System.EventHandler(this.Tb_Suffix_TextChanged);
             // 
             // Btn_FolderOpen
             // 
-            this.Btn_FolderOpen.Location = new System.Drawing.Point(428, 18);
+            this.Btn_FolderOpen.Location = new System.Drawing.Point(436, 18);
             this.Btn_FolderOpen.Name = "Btn_FolderOpen";
             this.Btn_FolderOpen.Size = new System.Drawing.Size(23, 18);
             this.Btn_FolderOpen.TabIndex = 2;
@@ -241,7 +245,8 @@
             // 
             this.Lv_Preview2.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Lv_Preview2.FullRowSelect = true;
-            this.Lv_Preview2.Location = new System.Drawing.Point(277, 91);
+            this.Lv_Preview2.HideSelection = false;
+            this.Lv_Preview2.Location = new System.Drawing.Point(285, 91);
             this.Lv_Preview2.Name = "Lv_Preview2";
             this.Lv_Preview2.Size = new System.Drawing.Size(174, 281);
             this.Lv_Preview2.TabIndex = 17;
@@ -252,9 +257,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(249, 223);
+            this.label8.Location = new System.Drawing.Point(247, 223);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(22, 21);
+            this.label8.Size = new System.Drawing.Size(32, 21);
             this.label8.TabIndex = 18;
             this.label8.Text = "⏩";
             // 
@@ -262,8 +267,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 403);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(465, 407);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.Lv_Preview2);
             this.Controls.Add(this.Tb_Suffix);

@@ -180,6 +180,22 @@ namespace RenameNum
             Close();
         }
 
+        private void Tb_Path_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] fn = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            if (File.GetAttributes(fn[0]).HasFlag(FileAttributes.Directory))
+                Tb_Path.Text = fn[0];
+            else
+                Tb_Path.Text = Directory.GetParent(fn[0]).FullName;
+        }
+
+        private void Tb_Path_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
     }
 }
 
