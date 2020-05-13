@@ -65,7 +65,7 @@
             // Btn_Close
             // 
             this.Btn_Close.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Btn_Close.Location = new System.Drawing.Point(380, 378);
+            this.Btn_Close.Location = new System.Drawing.Point(673, 378);
             this.Btn_Close.Name = "Btn_Close";
             this.Btn_Close.Size = new System.Drawing.Size(79, 23);
             this.Btn_Close.TabIndex = 9;
@@ -100,7 +100,7 @@
             this.Tb_Path.Location = new System.Drawing.Point(77, 18);
             this.Tb_Path.Name = "Tb_Path";
             this.Tb_Path.ReadOnly = true;
-            this.Tb_Path.Size = new System.Drawing.Size(353, 19);
+            this.Tb_Path.Size = new System.Drawing.Size(645, 19);
             this.Tb_Path.TabIndex = 0;
             this.Tb_Path.TextChanged += new System.EventHandler(this.Tb_Path_TextChanged);
             this.Tb_Path.DragDrop += new System.Windows.Forms.DragEventHandler(this.Tb_Path_DragDrop);
@@ -167,7 +167,7 @@
             // Btn_Rename
             // 
             this.Btn_Rename.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Btn_Rename.Location = new System.Drawing.Point(295, 378);
+            this.Btn_Rename.Location = new System.Drawing.Point(588, 378);
             this.Btn_Rename.Name = "Btn_Rename";
             this.Btn_Rename.Size = new System.Drawing.Size(79, 23);
             this.Btn_Rename.TabIndex = 10;
@@ -200,7 +200,7 @@
             this.Lv_Preview1.HideSelection = false;
             this.Lv_Preview1.Location = new System.Drawing.Point(77, 91);
             this.Lv_Preview1.Name = "Lv_Preview1";
-            this.Lv_Preview1.Size = new System.Drawing.Size(166, 281);
+            this.Lv_Preview1.Size = new System.Drawing.Size(315, 281);
             this.Lv_Preview1.TabIndex = 13;
             this.Lv_Preview1.UseCompatibleStateImageBehavior = false;
             this.Lv_Preview1.View = System.Windows.Forms.View.List;
@@ -235,7 +235,7 @@
             // 
             // Btn_FolderOpen
             // 
-            this.Btn_FolderOpen.Location = new System.Drawing.Point(436, 18);
+            this.Btn_FolderOpen.Location = new System.Drawing.Point(728, 19);
             this.Btn_FolderOpen.Name = "Btn_FolderOpen";
             this.Btn_FolderOpen.Size = new System.Drawing.Size(23, 18);
             this.Btn_FolderOpen.TabIndex = 2;
@@ -248,9 +248,9 @@
             this.Lv_Preview2.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Lv_Preview2.FullRowSelect = true;
             this.Lv_Preview2.HideSelection = false;
-            this.Lv_Preview2.Location = new System.Drawing.Point(285, 91);
+            this.Lv_Preview2.Location = new System.Drawing.Point(436, 91);
             this.Lv_Preview2.Name = "Lv_Preview2";
-            this.Lv_Preview2.Size = new System.Drawing.Size(174, 281);
+            this.Lv_Preview2.Size = new System.Drawing.Size(315, 281);
             this.Lv_Preview2.TabIndex = 17;
             this.Lv_Preview2.UseCompatibleStateImageBehavior = false;
             this.Lv_Preview2.View = System.Windows.Forms.View.List;
@@ -259,7 +259,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(247, 223);
+            this.label8.Location = new System.Drawing.Point(398, 217);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 21);
             this.label8.TabIndex = 18;
@@ -269,7 +269,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 407);
+            this.ClientSize = new System.Drawing.Size(764, 413);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.Lv_Preview2);
             this.Controls.Add(this.Tb_Suffix);
